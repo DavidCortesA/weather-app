@@ -21,11 +21,21 @@ const setWaetherData = data => {
     Object.keys(weatherData).forEach( key => {
         document.getElementById(key).textContent = weatherData[key];
     });
+
+    cleanUp();
+}
+
+const cleanUp = () => {
+    let container = document.getElementById('container');
+    let loader = document.getElementById('loader');
+
+    loader.style.display = 'none';
+    container.style.display = 'flex';
 }
 
 const getDate = () => {
     let date = new Date();
-    return `${date.getDate()}-${ ('0' + (date.getMonth() + 1)).slice(-2)}-${date.getFullYear()}`;
+    return `${('0' + (date.getDate())).slice(-2)}-${ ('0' + (date.getMonth() + 1)).slice(-2)}-${date.getFullYear()}`;
 }
 
 const onLoad = () => {
